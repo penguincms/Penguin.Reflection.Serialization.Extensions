@@ -1,0 +1,263 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Penguin.Reflection.Serialization.Extensions</name>
+    </assembly>
+    <members>
+        <member name="M:Penguin.Reflection.Serialization.Extensions.IHasAttributesExtensions.Attribute``1(Penguin.Reflection.Serialization.Abstractions.Interfaces.IHasAttributes)">
+            <summary>
+            Returns an attribute instance of a specified type
+            </summary>
+            <typeparam name="T">The type of the attribute to check for</typeparam>
+            <param name="o">Type type of the object to check for attributes</param>
+            <returns>The attribute, or null if not found</returns>
+        </member>
+        <member name="M:Penguin.Reflection.Serialization.Extensions.IHasAttributesExtensions.Attribute(Penguin.Reflection.Serialization.Abstractions.Interfaces.IHasAttributes,System.Type)">
+            <summary>
+            Returns an attribute instance of a specified type
+            </summary>
+            <param name="o">Type type of the object to check for attributes</param>
+            <param name="t">The type of the attribute to check for</param>
+            <returns>The attribute, or null if not found</returns>
+        </member>
+        <member name="M:Penguin.Reflection.Serialization.Extensions.IHasAttributesExtensions.AttributeNullable``2(Penguin.Reflection.Serialization.Abstractions.Interfaces.IHasAttributes,System.String)">
+            <summary>
+            Gets an attribute of a given type and returns a nullable? of its value
+            </summary>
+            <typeparam name="X">The type of the attribute</typeparam>
+            <typeparam name="Y">The type of the value to return</typeparam>
+            <param name="o">The object to check</param>
+            <param name="PropertyName">The property name to look for</param>
+            <returns>A nullable struct representation of its value</returns>
+        </member>
+        <member name="M:Penguin.Reflection.Serialization.Extensions.IHasAttributesExtensions.AttributeRef``2(Penguin.Reflection.Serialization.Abstractions.Interfaces.IHasAttributes,System.String)">
+            <summary>
+            Gets an attribute of a given type and then casts and returns a specified value
+            </summary>
+            <typeparam name="X">The type of the attribute</typeparam>
+            <typeparam name="Y">The type of the value to return</typeparam>
+            <param name="o">The object to check</param>
+            <param name="PropertyName">The property name to look for</param>
+            <returns>Either the casted property or null</returns>
+        </member>
+        <member name="M:Penguin.Reflection.Serialization.Extensions.IHasAttributesExtensions.AttributeRef``2(Penguin.Reflection.Serialization.Abstractions.Interfaces.IHasAttributes,System.String,``1)">
+            <summary>
+            Gets an attribute of a given type and then casts and returns a specified value
+            </summary>
+            <typeparam name="X">The type of the attribute</typeparam>
+            <typeparam name="Y">The type of the value to return</typeparam>
+            <param name="o">The object to check</param>
+            <param name="PropertyName">The property name to look for</param>
+            <param name="Default">Default to return if property or attribute does not exist</param>
+            <returns>Either the casted property, or default</returns>
+        </member>
+        <member name="M:Penguin.Reflection.Serialization.Extensions.IHasAttributesExtensions.AttributeStruct``2(Penguin.Reflection.Serialization.Abstractions.Interfaces.IHasAttributes,System.String,``1)">
+            <summary>
+            Gets an attribute of a given type and then casts and returns a specified value
+            </summary>
+            <typeparam name="X">The type of the attribute</typeparam>
+            <typeparam name="Y">The type of the value to return</typeparam>
+            <param name="o">The object to check</param>
+            <param name="PropertyName">The property name to look for</param>
+            <param name="Default">Default to return if property or attribute does not exist</param>
+            <returns>Either the casted property, or default</returns>
+        </member>
+        <member name="M:Penguin.Reflection.Serialization.Extensions.IHasAttributesExtensions.AttributeStruct``1(Penguin.Reflection.Serialization.Abstractions.Interfaces.IHasAttributes,System.Type,System.String,``0)">
+            <summary>
+            Retrieves a property value of an attribute of a given type (non-reference)
+            </summary>
+            <typeparam name="Y">The type of the property to return</typeparam>
+            <param name="o">The object to check</param>
+            <param name="t">The type of the attribute to search for</param>
+            <param name="PropertyName">The name of the property to retrieve the value for</param>
+            <param name="Default">If the property is not found, this is the default to return in place of null</param>
+            <returns>Either the casted property, or default</returns>
+        </member>
+        <member name="M:Penguin.Reflection.Serialization.Extensions.IHasAttributesExtensions.GetAttributeValue``2(Penguin.Reflection.Serialization.Abstractions.Interfaces.IHasAttributes,System.String)">
+            <summary>
+            Gets an attribute of a given type and then casts and returns a specified value
+            </summary>
+            <typeparam name="X">The type of the attribute to retrieve</typeparam>
+            <typeparam name="Y">The type of the value to return</typeparam>
+            <param name="o">The source of the attribute</param>
+            <param name="PropertyName">The name of the property on the attribute to retrieve</param>
+            <returns>The casted property value found on the attribute</returns>
+        </member>
+        <member name="M:Penguin.Reflection.Serialization.Extensions.IHasAttributesExtensions.HasAttribute``1(Penguin.Reflection.Serialization.Abstractions.Interfaces.IHasAttributes)">
+            <summary>
+            Checks to see if the object contains an attribute of a given type (by FullName)
+            </summary>
+            <typeparam name="T">The type of the attribute to check for</typeparam>
+            <param name="o">The object to check</param>
+            <returns>A bool indicating whether or not the attribute was found</returns>
+        </member>
+        <member name="M:Penguin.Reflection.Serialization.Extensions.IHasAttributesExtensions.HasAttribute(Penguin.Reflection.Serialization.Abstractions.Interfaces.IHasAttributes,System.Type)">
+            <summary>
+            Checks to see if the object contains an attribute of a given type (by FullName)
+            </summary>
+            <param name="o">The object to check</param>
+            <param name="t">The type of the attribute to check for</param>
+            <returns>A bool indicating whether or not the attribute was found</returns>
+        </member>
+        <member name="M:Penguin.Reflection.Serialization.Extensions.IHasPropertiesExtensions.GetProperty(Penguin.Reflection.Serialization.Abstractions.Interfaces.IHasProperties,System.String)">
+            <summary>
+            Retrieves a property from the selected type, recursively using "." as a delimiter
+            </summary>
+            <param name="target">The target to retrieve the property from</param>
+            <param name="Path">The path of the property to find</param>
+            <returns>The object instance of the property being searched for</returns>
+        </member>
+        <member name="M:Penguin.Reflection.Serialization.Extensions.IMetaPropertyExtensions.GetValue``1(Penguin.Reflection.Serialization.Abstractions.Interfaces.IMetaProperty,Penguin.Reflection.Serialization.Abstractions.Interfaces.IMetaObject)">
+            <summary>
+            Gets the value of the property from the speficied source casted to specified type
+            </summary>
+            <typeparam name="T">The type to cast the return as</typeparam>
+            <param name="p">The IMetaProperty defining the value to be returned</param>
+            <param name="target">The source object</param>
+            <returns>The source property casted to the specified type</returns>
+        </member>
+        <member name="M:Penguin.Reflection.Serialization.Extensions.IMetaPropertyExtensions.GetValue(Penguin.Reflection.Serialization.Abstractions.Interfaces.IMetaProperty,Penguin.Reflection.Serialization.Abstractions.Interfaces.IMetaObject)">
+            <summary>
+            Gets the value of the property from the speficied source as a string
+            </summary>
+            <param name="p">The IMetaProperty defining the value to be returned</param>
+            <param name="target">The source object</param>
+            <returns>The value of the property from the speficied source as a string</returns>
+        </member>
+        <member name="M:Penguin.Reflection.Serialization.Extensions.ITypeInfoExtensions.Is(Penguin.Reflection.Serialization.Abstractions.Interfaces.ITypeInfo,Penguin.Reflection.Serialization.Objects.MetaType)">
+            <summary>
+            Checks for type equality
+            </summary>
+            <param name="o">The object to check</param>
+            <param name="type">a Meta Type Definition to check against</param>
+            <returns>If the object is of the requested type</returns>
+        </member>
+        <member name="M:Penguin.Reflection.Serialization.Extensions.ITypeInfoExtensions.Is(Penguin.Reflection.Serialization.Abstractions.Interfaces.ITypeInfo,System.Type)">
+            <summary>
+            Checks for type equality
+            </summary>
+            <param name="o">The object to check</param>
+            <param name="type">a System.Type to check against</param>
+            <returns>If the object is of the requested type</returns>
+        </member>
+        <member name="M:Penguin.Reflection.Serialization.Extensions.ITypeInfoExtensions.Is``1(Penguin.Reflection.Serialization.Abstractions.Interfaces.ITypeInfo)">
+            <summary>
+            Checks for type equality
+            </summary>
+            <typeparam name="RType">A System.Type to check against</typeparam>
+            <param name="o">The object to check</param>
+            <returns>If the object is of the requested type</returns>
+        </member>
+        <member name="M:Penguin.Reflection.Serialization.Extensions.IMetaObjectExtensions.AddAttribute``1(Penguin.Reflection.Serialization.Objects.MetaObject,System.String,System.String)">
+            <summary>
+            Adds an attribute to the MetaObject
+            </summary>
+            <typeparam name="T">The Type of the attribute to add</typeparam>
+            <param name="o">The object to add the attribute to</param>
+            <param name="Property">The first property to add to the attribute instance</param>
+            <param name="Value">The value of the property being added</param>
+        </member>
+        <member name="M:Penguin.Reflection.Serialization.Extensions.IMetaObjectExtensions.AllAttributes(Penguin.Reflection.Serialization.Abstractions.Interfaces.IMetaObject)">
+            <summary>
+            Returns all attributes (property and type) from the specified object
+            </summary>
+            <param name="o">The object to return the attributes for</param>
+            <returns>All the attributes. All of them.</returns>
+        </member>
+        <member name="M:Penguin.Reflection.Serialization.Extensions.IMetaObjectExtensions.Clear(Penguin.Reflection.Serialization.Abstractions.Interfaces.IMetaObject)">
+            <summary>
+            Clears all properties and collection items. This will break if you use it on an object wrapper
+            </summary>
+            <param name="o">The object to clear</param>
+        </member>
+        <member name="M:Penguin.Reflection.Serialization.Extensions.IMetaObjectExtensions.GetProperty(Penguin.Reflection.Serialization.Abstractions.Interfaces.IMetaObject,System.String)">
+            <summary>
+            Recursively gets a property by name using a "." delimited path
+            </summary>
+            <param name="o">The source object</param>
+            <param name="Path">The path of the property to get</param>
+            <returns>The MetaObject instance of the property</returns>
+        </member>
+        <member name="M:Penguin.Reflection.Serialization.Extensions.IMetaObjectExtensions.GetTypedValue(Penguin.Reflection.Serialization.Abstractions.Interfaces.IMetaObject)">
+            <summary>
+            Gets the value of the object as its originally declared type. Probably only works for structs
+            </summary>
+            <param name="o">The object to get the value of </param>
+            <returns>The object value, casted to its original type</returns>
+        </member>
+        <member name="M:Penguin.Reflection.Serialization.Extensions.IMetaObjectExtensions.GetValue``1(Penguin.Reflection.Serialization.Abstractions.Interfaces.IMetaObject,Penguin.Reflection.Serialization.Abstractions.Interfaces.IMetaProperty)">
+            <summary>
+            Gets the casted value of an object based on its IMetaProperty
+            </summary>
+            <typeparam name="T">The type to cast the value as</typeparam>
+            <param name="o">The source object</param>
+            <param name="property">The IMetaProperty to get</param>
+            <returns>The casted value of an object based on its IMetaProperty</returns>
+        </member>
+        <member name="M:Penguin.Reflection.Serialization.Extensions.IMetaObjectExtensions.GetValue``1(Penguin.Reflection.Serialization.Abstractions.Interfaces.IMetaObject,System.String)">
+            <summary>
+            Gets the casted value of a property based on its property name. Recursive using a "." delimited path
+            </summary>
+            <typeparam name="T">The type to cast the value as</typeparam>
+            <param name="o">The source object</param>
+            <param name="PropertyName">The name of the property to get</param>
+            <returns>The casted value of an object based on its IMetaProperty</returns>
+        </member>
+        <member name="M:Penguin.Reflection.Serialization.Extensions.IMetaObjectExtensions.GetValue``1(Penguin.Reflection.Serialization.Abstractions.Interfaces.IMetaObject)">
+            <summary>
+            Gets the value of the object casted to the generic type
+            </summary>
+            <typeparam name="T">The type to cast the object as</typeparam>
+            <param name="o">The source</param>
+            <returns>The casted value</returns>
+        </member>
+        <member name="M:Penguin.Reflection.Serialization.Extensions.IMetaObjectExtensions.GetValue(Penguin.Reflection.Serialization.Abstractions.Interfaces.IMetaObject,System.Type)">
+            <summary>
+            Gets the value of the object casted to the type variable
+            </summary>
+            <param name="o">The source</param>
+            <param name="t">The type to cast the object as</param>
+            <returns>The casted value</returns>
+        </member>
+        <member name="M:Penguin.Reflection.Serialization.Extensions.IMetaObjectExtensions.HasProperty(Penguin.Reflection.Serialization.Abstractions.Interfaces.IMetaObject,System.String)">
+            <summary>
+            Checks if a property with the given name exists
+            </summary>
+            <param name="o">The source</param>
+            <param name="PropertyName">The property name</param>
+            <returns>A bool indicating whether or not the property exists</returns>
+        </member>
+        <member name="M:Penguin.Reflection.Serialization.Extensions.IMetaObjectExtensions.HasProperty(Penguin.Reflection.Serialization.Abstractions.Interfaces.IMetaObject,Penguin.Reflection.Serialization.Abstractions.Interfaces.IMetaProperty)">
+            <summary>
+            Checks if a property of a matching IMetaProperty exists
+            </summary>
+            <param name="o">The source</param>
+            <param name="property">The IMetaProperty to match against</param>
+            <returns>A bool indicating whether or not the property exists</returns>
+        </member>
+        <member name="M:Penguin.Reflection.Serialization.Extensions.IMetaObjectExtensions.IMetaAttribute(Penguin.Reflection.Serialization.Abstractions.Interfaces.IMetaObject,System.String)">
+            <summary>
+            Gets an IMetaAttribute based on the name (apparently)
+            </summary>
+            <param name="o">the source object</param>
+            <param name="IMetaAttributeName">The attribute name</param>
+            <returns>The attribute</returns>
+        </member>
+        <member name="M:Penguin.Reflection.Serialization.Extensions.IMetaObjectExtensions.ToDictionary``2(Penguin.Reflection.Serialization.Abstractions.Interfaces.IMetaObject)">
+            <summary>
+            Casts and IMetaObject as a dictionary of the given type by casting each parameter
+            </summary>
+            <typeparam name="X">The Key type</typeparam>
+            <typeparam name="Y">The Value type</typeparam>
+            <param name="o">The source object</param>
+            <returns>A dictionary containing the value of the IMetaObject</returns>
+        </member>
+        <member name="M:Penguin.Reflection.Serialization.Extensions.IMetaObjectExtensions.ToJson(Penguin.Reflection.Serialization.Abstractions.Interfaces.IMetaObject)">
+            <summary>
+            Attempts to convert the MetaObject into Json
+            </summary>
+            <param name="o">The source object</param>
+            <returns>A Json string representation of the object</returns>
+        </member>
+    </members>
+</doc>
