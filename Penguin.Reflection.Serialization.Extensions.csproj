@@ -2,10 +2,10 @@
   <Import Project="Penguin.Projects.Shared\Penguin.Projects.Shared.csproj" />
   <PropertyGroup>
     <PackageProjectUrl>https://github.com/penguincms/Penguin.Reflection.Serialization.Extensions</PackageProjectUrl>
-    <Version>3.0.2</Version>
+    <Version>3.0.4</Version>
     <Description>Extension methods to simplify serialized data access for use with the Penguin.Reflection.Serialization system</Description>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Penguin.Reflection.Serialization" Version="3.0.1" />
+    <PackageReference Include="Penguin.Reflection.Serialization" Version="3.0.4" />
   </ItemGroup>
 </Project>

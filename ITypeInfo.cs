@@ -17,7 +17,7 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <param name="o">The object to check</param>
         /// <param name="type">a Meta Type Definition to check against</param>
         /// <returns>If the object is of the requested type</returns>
-        public static bool Is(this ITypeInfo o, MetaType type) => o.Is(type.FullName);
+        public static bool Is(this ITypeInfo o, MetaType type) => o.Is(type.StringValue);
 
         /// <summary>
         /// Checks for type equality
@@ -25,7 +25,7 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <param name="o">The object to check</param>
         /// <param name="type">a System.Type to check against</param>
         /// <returns>If the object is of the requested type</returns>
-        public static bool Is(this ITypeInfo o, RType type) => o.Is(type.FullName);
+        public static bool Is(this ITypeInfo o, RType type) => o.Is(type.ToString());
 
         /// <summary>
         /// Checks for type equality
