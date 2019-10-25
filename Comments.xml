@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>Penguin.Reflection.Serialization.Extensions</name>
+        <name>Penguin.Reflection.Serialization.Extensions.Local</name>
     </assembly>
     <members>
         <member name="M:Penguin.Reflection.Serialization.Extensions.IEnumerableExtensions.ToMetaList``1(System.Collections.Generic.IEnumerable{``0},System.Boolean)">
