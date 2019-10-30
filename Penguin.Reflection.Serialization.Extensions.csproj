@@ -5,8 +5,10 @@
     <Version>3.0.4</Version>
     <Description>Extension methods to simplify serialized data access for use with the Penguin.Reflection.Serialization system</Description>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Penguin.Reflection.Serialization.Extensions</AssemblyName>
+    <RootNamespace>Penguin.Reflection.Serialization.Extensions</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Penguin.Reflection.Serialization" Version="3.0.7-T9M1HHH" />
+    <PackageReference Include="Penguin.Reflection.Serialization" Version="3.0.7-T9M2XAX" />
   </ItemGroup>
 </Project>
