@@ -16,7 +16,10 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <param name="p">The IMetaProperty defining the value to be returned</param>
         /// <param name="target">The source object</param>
         /// <returns>The source property casted to the specified type</returns>
-        public static T GetValue<T>(this IMetaProperty p, IMetaObject target) => target.GetValue<T>(p.Name);
+        public static T GetValue<T>(this IMetaProperty p, IMetaObject target)
+        {
+            return target.GetValue<T>(p.Name);
+        }
 
         /// <summary>
         /// Gets the value of the property from the speficied source as a string
@@ -24,7 +27,10 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <param name="p">The IMetaProperty defining the value to be returned</param>
         /// <param name="target">The source object</param>
         /// <returns>The value of the property from the speficied source as a string</returns>
-        public static string GetValue(this IMetaProperty p, IMetaObject target) => target[p.Name].Value;
+        public static string GetValue(this IMetaProperty p, IMetaObject target)
+        {
+            return target[p.Name].Value;
+        }
 
         #endregion Methods
     }

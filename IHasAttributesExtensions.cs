@@ -17,7 +17,10 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <typeparam name="T">The type of the attribute to check for</typeparam>
         /// <param name="o">Type type of the object to check for attributes</param>
         /// <returns>The attribute, or null if not found</returns>
-        public static IMetaObject Attribute<T>(this IHasAttributes o) => Attribute(o, typeof(T));
+        public static IMetaObject Attribute<T>(this IHasAttributes o)
+        {
+            return Attribute(o, typeof(T));
+        }
 
         /// <summary>
         /// Returns an attribute instance of a specified type
@@ -25,7 +28,10 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <param name="o">Type type of the object to check for attributes</param>
         /// <param name="t">The type of the attribute to check for</param>
         /// <returns>The attribute, or null if not found</returns>
-        public static IMetaObject Attribute(this IHasAttributes o, Type t) => o.Attributes.FirstOrDefault(a => a.Type.FullName == t.FullName)?.Instance;
+        public static IMetaObject Attribute(this IHasAttributes o, Type t)
+        {
+            return o.Attributes.FirstOrDefault(a => a.Type.FullName == t.FullName)?.Instance;
+        }
 
         /// <summary>
         /// Gets an attribute of a given type and returns a nullable? of its value
@@ -128,7 +134,10 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <param name="o">The source of the attribute</param>
         /// <param name="PropertyName">The name of the property on the attribute to retrieve</param>
         /// <returns>The casted property value found on the attribute</returns>
-        public static Y GetAttributeValue<X, Y>(this IHasAttributes o, string PropertyName) => o.Attribute<X>()[PropertyName].GetValue<Y>();
+        public static Y GetAttributeValue<X, Y>(this IHasAttributes o, string PropertyName)
+        {
+            return o.Attribute<X>()[PropertyName].GetValue<Y>();
+        }
 
         /// <summary>
         /// Checks to see if the object contains an attribute of a given type (by FullName)
@@ -136,7 +145,10 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <typeparam name="T">The type of the attribute to check for</typeparam>
         /// <param name="o">The object to check</param>
         /// <returns>A bool indicating whether or not the attribute was found</returns>
-        public static bool HasAttribute<T>(this IHasAttributes o) => HasAttribute(o, typeof(T));
+        public static bool HasAttribute<T>(this IHasAttributes o)
+        {
+            return HasAttribute(o, typeof(T));
+        }
 
         /// <summary>
         /// Checks to see if the object contains an attribute of a given type (by FullName)
@@ -144,7 +156,10 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <param name="o">The object to check</param>
         /// <param name="t">The type of the attribute to check for</param>
         /// <returns>A bool indicating whether or not the attribute was found</returns>
-        public static bool HasAttribute(this IHasAttributes o, Type t) => o?.Attributes != null && o.Attributes.Any(a => a.Type.FullName == t.FullName);
+        public static bool HasAttribute(this IHasAttributes o, Type t)
+        {
+            return o?.Attributes != null && o.Attributes.Any(a => a.Type.FullName == t.FullName);
+        }
 
         #endregion Methods
     }

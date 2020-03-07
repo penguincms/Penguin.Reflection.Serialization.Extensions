@@ -131,7 +131,10 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// </summary>
         /// <param name="o">The object to get the value of </param>
         /// <returns>The object value, casted to its original type</returns>
-        public static object GetTypedValue(this IMetaObject o) => o.GetValue(System.Type.GetType(o.Type.AssemblyQualifiedName));
+        public static object GetTypedValue(this IMetaObject o)
+        {
+            return o.GetValue(System.Type.GetType(o.Type.AssemblyQualifiedName));
+        }
 
         /// <summary>
         /// Gets the casted value of an object based on its IMetaProperty
@@ -140,7 +143,10 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <param name="o">The source object</param>
         /// <param name="property">The IMetaProperty to get</param>
         /// <returns>The casted value of an object based on its IMetaProperty</returns>
-        public static T GetValue<T>(this IMetaObject o, IMetaProperty property) => GetValue<T>(o.GetProperty(property.Name));
+        public static T GetValue<T>(this IMetaObject o, IMetaProperty property)
+        {
+            return GetValue<T>(o.GetProperty(property.Name));
+        }
 
         /// <summary>
         /// Gets the casted value of a property based on its property name. Recursive using a "." delimited path
@@ -149,7 +155,10 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <param name="o">The source object</param>
         /// <param name="PropertyName">The name of the property to get</param>
         /// <returns>The casted value of an object based on its IMetaProperty</returns>
-        public static T GetValue<T>(this IMetaObject o, string PropertyName) => GetValue<T>(o.GetProperty(PropertyName));
+        public static T GetValue<T>(this IMetaObject o, string PropertyName)
+        {
+            return GetValue<T>(o.GetProperty(PropertyName));
+        }
 
         /// <summary>
         /// Gets the value of the object casted to the generic type
@@ -157,7 +166,10 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <typeparam name="T">The type to cast the object as</typeparam>
         /// <param name="o">The source</param>
         /// <returns>The casted value</returns>
-        public static T GetValue<T>(this IMetaObject o) => (T)o.GetValue(typeof(T));
+        public static T GetValue<T>(this IMetaObject o)
+        {
+            return (T)o.GetValue(typeof(T));
+        }
 
         /// <summary>
         /// Gets the value of the object casted to the type variable
@@ -165,7 +177,10 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <param name="o">The source</param>
         /// <param name="t">The type to cast the object as</param>
         /// <returns>The casted value</returns>
-        public static object GetValue(this IMetaObject o, System.Type t) => o.Value.Convert(t);
+        public static object GetValue(this IMetaObject o, System.Type t)
+        {
+            return o.Value.Convert(t);
+        }
 
         /// <summary>
         /// Checks if a property with the given name exists
@@ -173,7 +188,10 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <param name="o">The source</param>
         /// <param name="PropertyName">The property name</param>
         /// <returns>A bool indicating whether or not the property exists</returns>
-        public static bool HasProperty(this IMetaObject o, string PropertyName) => o.Properties.Any(p => p.Property.Name == PropertyName);
+        public static bool HasProperty(this IMetaObject o, string PropertyName)
+        {
+            return o.Properties.Any(p => p.Property.Name == PropertyName);
+        }
 
         /// <summary>
         /// Checks if a property of a matching IMetaProperty exists
@@ -181,7 +199,10 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <param name="o">The source</param>
         /// <param name="property">The IMetaProperty to match against</param>
         /// <returns>A bool indicating whether or not the property exists</returns>
-        public static bool HasProperty(this IMetaObject o, IMetaProperty property) => o.Properties.Any(p => p.Property.Name == property.Name);
+        public static bool HasProperty(this IMetaObject o, IMetaProperty property)
+        {
+            return o.Properties.Any(p => p.Property.Name == property.Name);
+        }
 
         /// <summary>
         /// Gets an IMetaAttribute based on the name (apparently)
@@ -189,8 +210,11 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <param name="o">the source object</param>
         /// <param name="IMetaAttributeName">The attribute name</param>
         /// <returns>The attribute</returns>
-        public static IMetaAttribute IMetaAttribute(this IMetaObject o, string IMetaAttributeName) => o.Property?.Attributes?.FirstOrDefault(a => a.Type.Name == IMetaAttributeName) ??
-                                                                                                           o.Type.Attributes.FirstOrDefault(a => a.Type.Name == IMetaAttributeName);
+        public static IMetaAttribute IMetaAttribute(this IMetaObject o, string IMetaAttributeName)
+        {
+            return o.Property?.Attributes?.FirstOrDefault(a => a.Type.Name == IMetaAttributeName) ??
+                   o.Type.Attributes.FirstOrDefault(a => a.Type.Name == IMetaAttributeName);
+        }
 
         /// <summary>
         /// Casts and IMetaObject as a dictionary of the given type by casting each parameter
