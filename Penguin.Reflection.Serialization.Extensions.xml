@@ -143,6 +143,23 @@
             <param name="target">The source object</param>
             <returns>The value of the property from the speficied source as a string</returns>
         </member>
+        <member name="M:Penguin.Reflection.Serialization.Extensions.IMetaPropertyExtensions.GetFlags(Penguin.Reflection.Serialization.Abstractions.Interfaces.IMetaProperty,Penguin.Reflection.Serialization.Abstractions.Interfaces.IMetaObject,System.Int64@)">
+            <summary>
+            Gets flags set on an enum property
+            </summary>
+            <param name="p">The propertyInfo</param>
+            <param name="target">The instance of the object</param>
+            <param name="otherFlags">returns a long representing the value of all flags on the object value that aren't declared explicitely</param>
+            <returns>A list of the set enum values</returns>
+        </member>
+        <member name="M:Penguin.Reflection.Serialization.Extensions.IMetaPropertyExtensions.GetFlags(Penguin.Reflection.Serialization.Abstractions.Interfaces.IMetaProperty,Penguin.Reflection.Serialization.Abstractions.Interfaces.IMetaObject)">
+            <summary>
+            Gets flags set on an enum property
+            </summary>
+            <param name="p">The propertyInfo</param>
+            <param name="target">The instance of the object</param>
+            <returns>A list of the set enum values</returns>
+        </member>
         <member name="M:Penguin.Reflection.Serialization.Extensions.ITypeInfoExtensions.Is(Penguin.Reflection.Serialization.Abstractions.Interfaces.ITypeInfo,Penguin.Reflection.Serialization.Objects.MetaType)">
             <summary>
             Checks for type equality
