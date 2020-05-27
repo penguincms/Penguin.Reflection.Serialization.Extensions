@@ -19,6 +19,16 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <returns>If the object is of the requested type</returns>
         public static bool Is(this ITypeInfo o, MetaType type)
         {
+            if (o is null)
+            {
+                throw new System.ArgumentNullException(nameof(o));
+            }
+
+            if (type is null)
+            {
+                throw new System.ArgumentNullException(nameof(type));
+            }
+
             return o.Is(type.StringValue);
         }
 
@@ -30,6 +40,16 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <returns>If the object is of the requested type</returns>
         public static bool Is(this ITypeInfo o, RType type)
         {
+            if (o is null)
+            {
+                throw new System.ArgumentNullException(nameof(o));
+            }
+
+            if (type is null)
+            {
+                throw new System.ArgumentNullException(nameof(type));
+            }
+
             return o.Is(type.ToString());
         }
 
@@ -41,6 +61,11 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <returns>If the object is of the requested type</returns>
         public static bool Is<RType>(this ITypeInfo o)
         {
+            if (o is null)
+            {
+                throw new System.ArgumentNullException(nameof(o));
+            }
+
             return Is(o, typeof(RType));
         }
 
