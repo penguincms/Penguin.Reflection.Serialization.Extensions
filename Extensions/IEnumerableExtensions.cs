@@ -39,7 +39,7 @@ namespace Penguin.Reflection.Serialization.Extensions
 
             foreach (T o in source)
             {
-                IMetaObject m = new MetaObject(o, c);
+                MetaObject m = new MetaObject(o, c);
 
                 if (Hydrate)
                 {

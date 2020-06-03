@@ -200,9 +200,9 @@
             <param name="o">The object to return the attributes for</param>
             <returns>All the attributes. All of them.</returns>
         </member>
-        <member name="M:Penguin.Reflection.Serialization.Extensions.IMetaObjectExtensions.Clear(Penguin.Reflection.Serialization.Abstractions.Interfaces.IMetaObject)">
+        <member name="M:Penguin.Reflection.Serialization.Extensions.IMetaObjectExtensions.Clear(Penguin.Reflection.Serialization.Objects.MetaObject)">
             <summary>
-            Clears all properties and collection items. This will break if you use it on an object wrapper
+            Clears all properties and collection items.
             </summary>
             <param name="o">The object to clear</param>
         </member>

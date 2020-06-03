@@ -24,11 +24,16 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <param name="Value">The value of the property being added</param>
         public static void AddAttribute<T>(this MetaObject o, string Property, string Value)
         {
+            if (o is null)
+            {
+                throw new System.ArgumentNullException(nameof(o));
+            }
+
             MetaAttribute a = new MetaAttribute(-1)
             {
                 Instance = new MetaObject(-1)
                 {
-                    Properties = new List<IMetaObject>()
+                    Properties = new List<MetaObject>()
                     {
                         new MetaObject(-1)
                         {
@@ -55,11 +60,11 @@ namespace Penguin.Reflection.Serialization.Extensions
                 o.Property = p;
             }
 
-            IList<IMetaAttribute> existingAttributes = o.Property.Attributes.ToList();
+            IList<MetaAttribute> existingAttributes = o.Property.Attributes.ToList();
 
             existingAttributes.Add(a);
 
-            (o.Property as MetaProperty).Attributes = existingAttributes;
+            o.Property.Attributes = existingAttributes;
         }
 
         /// <summary>
@@ -82,16 +87,16 @@ namespace Penguin.Reflection.Serialization.Extensions
         }
 
         /// <summary>
-        /// Clears all properties and collection items. This will break if you use it on an object wrapper
+        /// Clears all properties and collection items.
         /// </summary>
         /// <param name="o">The object to clear</param>
-        public static void Clear(this IMetaObject o)
+        public static void Clear(this MetaObject o)
         {
-            (o as MetaObject).Value = null;
+            o.Value = null;
 
             if (o.Properties != null && o.Properties.Any())
             {
-                foreach (IMetaObject p in o.Properties)
+                foreach (MetaObject p in o.Properties)
                 {
                     p.Clear();
                 }
@@ -99,7 +104,7 @@ namespace Penguin.Reflection.Serialization.Extensions
 
             if (o.CollectionItems != null && o.CollectionItems.Any())
             {
-                foreach (IMetaObject c in o.CollectionItems)
+                foreach (MetaObject c in o.CollectionItems)
                 {
                     c.Clear();
                 }
