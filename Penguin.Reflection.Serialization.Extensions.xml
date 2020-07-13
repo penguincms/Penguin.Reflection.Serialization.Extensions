@@ -35,7 +35,7 @@
             <summary>
             Returns an attribute instance of a specified type
             </summary>
-            <param name="o">Type type of the object to check for attributes</param>
+            <param name="o">Type of the object to check for attributes</param>
             <param name="t">The type of the attribute to check for</param>
             <returns>The attribute, or null if not found</returns>
         </member>
@@ -123,7 +123,7 @@
             Retrieves a property from the selected type, recursively using "." as a delimiter
             </summary>
             <param name="target">The target to retrieve the property from</param>
-            <param name="Path">The path of the property to find</param>
+            <param name="path">The path of the property to find</param>
             <returns>The object instance of the property being searched for</returns>
         </member>
         <member name="M:Penguin.Reflection.Serialization.Extensions.IMetaPropertyExtensions.GetValue``1(Penguin.Reflection.Serialization.Abstractions.Interfaces.IMetaProperty,Penguin.Reflection.Serialization.Abstractions.Interfaces.IMetaObject)">

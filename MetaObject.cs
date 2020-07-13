@@ -2,6 +2,7 @@
 using Penguin.Reflection.Extensions;
 using Penguin.Reflection.Serialization.Abstractions.Interfaces;
 using Penguin.Reflection.Serialization.Objects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -74,6 +75,11 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <returns>All the attributes. All of them.</returns>
         public static List<IMetaAttribute> AllAttributes(this IMetaObject o)
         {
+            if (o is null)
+            {
+                throw new System.ArgumentNullException(nameof(o));
+            }
+
             List<IMetaAttribute> toReturn = new List<IMetaAttribute>();
 
             if (o.Property != null)
@@ -92,6 +98,11 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <param name="o">The object to clear</param>
         public static void Clear(this MetaObject o)
         {
+            if (o is null)
+            {
+                throw new System.ArgumentNullException(nameof(o));
+            }
+
             o.Value = null;
 
             if (o.Properties != null && o.Properties.Any())
@@ -121,11 +132,21 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <returns>The MetaObject instance of the property</returns>
         public static IMetaObject GetProperty(this IMetaObject o, string Path)
         {
+            if (o is null)
+            {
+                throw new System.ArgumentNullException(nameof(o));
+            }
+
+            if (Path is null)
+            {
+                throw new System.ArgumentNullException(nameof(Path));
+            }
+
             IMetaObject m = o;
 
             foreach (string chunk in Path.Split('.'))
             {
-                m = m[chunk];
+                m = m[chunk] ?? throw new NullReferenceException($"Property not found at path {Path}, missing chunk {chunk}.");
             }
 
             return m;
@@ -138,6 +159,11 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <returns>The object value, casted to its original type</returns>
         public static object GetTypedValue(this IMetaObject o)
         {
+            if (o is null)
+            {
+                throw new System.ArgumentNullException(nameof(o));
+            }
+
             return o.GetValue(System.Type.GetType(o.Type.AssemblyQualifiedName));
         }
 
@@ -150,6 +176,16 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <returns>The casted value of an object based on its IMetaProperty</returns>
         public static T GetValue<T>(this IMetaObject o, IMetaProperty property)
         {
+            if (o is null)
+            {
+                throw new System.ArgumentNullException(nameof(o));
+            }
+
+            if (property is null)
+            {
+                throw new System.ArgumentNullException(nameof(property));
+            }
+
             return GetValue<T>(o.GetProperty(property.Name));
         }
 
@@ -184,6 +220,11 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <returns>The casted value</returns>
         public static object GetValue(this IMetaObject o, System.Type t)
         {
+            if (o is null)
+            {
+                throw new System.ArgumentNullException(nameof(o));
+            }
+
             return o.Value.Convert(t);
         }
 
@@ -195,6 +236,11 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <returns>A bool indicating whether or not the property exists</returns>
         public static bool HasProperty(this IMetaObject o, string PropertyName)
         {
+            if (o is null)
+            {
+                throw new System.ArgumentNullException(nameof(o));
+            }
+
             return o.Properties.Any(p => p.Property.Name == PropertyName);
         }
 
@@ -206,6 +252,11 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <returns>A bool indicating whether or not the property exists</returns>
         public static bool HasProperty(this IMetaObject o, IMetaProperty property)
         {
+            if (o is null)
+            {
+                throw new System.ArgumentNullException(nameof(o));
+            }
+
             return o.Properties.Any(p => p.Property.Name == property.Name);
         }
 
@@ -217,6 +268,11 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <returns>The attribute</returns>
         public static IMetaAttribute IMetaAttribute(this IMetaObject o, string IMetaAttributeName)
         {
+            if (o is null)
+            {
+                throw new System.ArgumentNullException(nameof(o));
+            }
+
             return o.Property?.Attributes?.FirstOrDefault(a => a.Type.Name == IMetaAttributeName) ??
                    o.Type.Attributes.FirstOrDefault(a => a.Type.Name == IMetaAttributeName);
         }
@@ -230,6 +286,11 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <returns>A dictionary containing the value of the IMetaObject</returns>
         public static Dictionary<X, Y> ToDictionary<X, Y>(this IMetaObject o)
         {
+            if (o is null)
+            {
+                throw new System.ArgumentNullException(nameof(o));
+            }
+
             Dictionary<X, Y> toReturn = new Dictionary<X, Y>();
 
             foreach (MetaObject thisObject in o.CollectionItems)
@@ -250,6 +311,11 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <returns>A Json string representation of the object</returns>
         public static string ToJson(this IMetaObject o)
         {
+            if (o is null)
+            {
+                throw new System.ArgumentNullException(nameof(o));
+            }
+
             return o.ToJson(new StringBuilder()).ToString();
         }
 

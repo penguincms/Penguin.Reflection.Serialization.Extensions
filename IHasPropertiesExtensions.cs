@@ -14,13 +14,23 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// Retrieves a property from the selected type, recursively using "." as a delimiter
         /// </summary>
         /// <param name="target">The target to retrieve the property from</param>
-        /// <param name="Path">The path of the property to find</param>
+        /// <param name="path">The path of the property to find</param>
         /// <returns>The object instance of the property being searched for</returns>
-        public static IMetaProperty GetProperty(this IHasProperties target, string Path)
+        public static IMetaProperty GetProperty(this IHasProperties target, string path)
         {
+            if (target is null)
+            {
+                throw new System.ArgumentNullException(nameof(target));
+            }
+
+            if (path is null)
+            {
+                throw new System.ArgumentNullException(nameof(path));
+            }
+
             IMetaProperty m = null;
 
-            foreach (string chunk in Path.Split('.'))
+            foreach (string chunk in path.Split('.'))
             {
                 m = (m?.Type ?? target).Properties.FirstOrDefault(p => p.Name == chunk);
 

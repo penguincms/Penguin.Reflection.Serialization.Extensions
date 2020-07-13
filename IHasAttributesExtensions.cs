@@ -15,7 +15,7 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// Returns an attribute instance of a specified type
         /// </summary>
         /// <typeparam name="T">The type of the attribute to check for</typeparam>
-        /// <param name="o">Type type of the object to check for attributes</param>
+        /// <param name="o">Type of the object to check for attributes</param>
         /// <returns>The attribute, or null if not found</returns>
         public static IMetaObject Attribute<T>(this IHasAttributes o)
         {
@@ -25,11 +25,16 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <summary>
         /// Returns an attribute instance of a specified type
         /// </summary>
-        /// <param name="o">Type type of the object to check for attributes</param>
+        /// <param name="o">Type of the object to check for attributes</param>
         /// <param name="t">The type of the attribute to check for</param>
         /// <returns>The attribute, or null if not found</returns>
         public static IMetaObject Attribute(this IHasAttributes o, Type t)
         {
+            if (o is null)
+            {
+                throw new ArgumentNullException(nameof(o));
+            }
+
             return o.Attributes.FirstOrDefault(a => a.Type.FullName == t.FullName)?.Instance;
         }
 

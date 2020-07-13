@@ -33,7 +33,10 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <returns>And IEnumerable of converted objects</returns>
         public static IEnumerable<IMetaObject> ToMetaList<T>(this IEnumerable<T> source, MetaConstructor c, bool Hydrate = false)
         {
-            Contract.Requires(source != null);
+            if (source is null)
+            {
+                throw new System.ArgumentNullException(nameof(source));
+            }
 
             c = c ?? new MetaConstructor();
 
