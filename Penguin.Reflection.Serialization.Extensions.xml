@@ -28,7 +28,7 @@
             Returns an attribute instance of a specified type
             </summary>
             <typeparam name="T">The type of the attribute to check for</typeparam>
-            <param name="o">Type type of the object to check for attributes</param>
+            <param name="o">Type of the object to check for attributes</param>
             <returns>The attribute, or null if not found</returns>
         </member>
         <member name="M:Penguin.Reflection.Serialization.Extensions.IHasAttributesExtensions.Attribute(Penguin.Reflection.Serialization.Abstractions.Interfaces.IHasAttributes,System.Type)">
