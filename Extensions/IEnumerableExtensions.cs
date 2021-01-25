@@ -2,7 +2,6 @@
 using Penguin.Reflection.Serialization.Constructors;
 using Penguin.Reflection.Serialization.Objects;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
 
 namespace Penguin.Reflection.Serialization.Extensions
 {

@@ -337,12 +337,12 @@ namespace Penguin.Reflection.Serialization.Extensions
 
                         b.Append($"\"{m.Property.Name}\": ");
                         m.ToJson(b);
-                        b.Append(",");
+                        b.Append(',');
                     }
 
                     b.Append($"\"$ToString\": \"{o.Value}\"");
 
-                    b.Append("}");
+                    b.Append('}');
                     break;
 
                 case CoreType.Collection:
@@ -353,7 +353,7 @@ namespace Penguin.Reflection.Serialization.Extensions
                         m.ToJson(b);
                         if (i != o.CollectionItems.Count - 1)
                         {
-                            b.Append(",");
+                            b.Append(',');
                         }
                     }
                     b.Append(" ] ");
