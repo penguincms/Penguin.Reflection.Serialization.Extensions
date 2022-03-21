@@ -17,10 +17,7 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <param name="source">The source IEnumerable</param>
         /// <param name="Hydrate">Should the return objects be hydrated?</param>
         /// <returns>And IEnumerable of converted objects</returns>
-        public static IEnumerable<IMetaObject> ToMetaList<T>(this IEnumerable<T> source, bool Hydrate = false)
-        {
-            return source.ToMetaList<T>(null, Hydrate);
-        }
+        public static IEnumerable<IMetaObject> ToMetaList<T>(this IEnumerable<T> source, bool Hydrate = false) => source.ToMetaList<T>(null, Hydrate);
 
         /// <summary>
         /// Converts an IEnumerable to an IEnumerable of MetObjects
