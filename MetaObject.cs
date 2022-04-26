@@ -320,37 +320,38 @@ namespace Penguin.Reflection.Serialization.Extensions
             switch (thisCoreType)
             {
                 case CoreType.Value:
-                    b.Append("\"" + o.Value + "\"");
+                    _ = b.Append("\"" + o.Value + "\"");
                     break;
 
                 case CoreType.Reference:
-                    b.Append(" { ");
+                    _ = b.Append(" { ");
                     for (int i = 0; i < o.Properties.Count; i++)
                     {
                         IMetaObject m = o.Properties[i];
 
-                        b.Append($"\"{m.Property.Name}\": ");
-                        m.ToJson(b);
-                        b.Append(',');
+                        _ = b.Append($"\"{m.Property.Name}\": ");
+                        _ = m.ToJson(b);
+                        _ = b.Append(',');
                     }
 
-                    b.Append($"\"$ToString\": \"{o.Value}\"");
+                    _ = b.Append($"\"$ToString\": \"{o.Value}\"");
 
-                    b.Append('}');
+                    _ = b.Append('}');
                     break;
 
                 case CoreType.Collection:
-                    b.Append(" [ ");
+                    _ = b.Append(" [ ");
                     for (int i = 0; i < o.CollectionItems.Count; i++)
                     {
                         IMetaObject m = o.CollectionItems[i];
-                        m.ToJson(b);
+                        _ = m.ToJson(b);
                         if (i != o.CollectionItems.Count - 1)
                         {
-                            b.Append(',');
+                            _ = b.Append(',');
                         }
                     }
-                    b.Append(" ] ");
+
+                    _ = b.Append(" ] ");
                     break;
             }
 

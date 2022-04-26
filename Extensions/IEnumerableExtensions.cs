@@ -2,7 +2,7 @@
 using Penguin.Reflection.Serialization.Constructors;
 using Penguin.Reflection.Serialization.Objects;
 using System.Collections.Generic;
-
+using System.Runtime.CompilerServices;
 namespace Penguin.Reflection.Serialization.Extensions
 {
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
@@ -34,7 +34,10 @@ namespace Penguin.Reflection.Serialization.Extensions
                 throw new System.ArgumentNullException(nameof(source));
             }
 
-            c = c ?? new MetaConstructor();
+            if (c is null)
+            {
+                c = new MetaConstructor();
+            }
 
             foreach (T o in source)
             {
