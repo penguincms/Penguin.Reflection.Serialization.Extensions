@@ -196,7 +196,10 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <param name="o">The source object</param>
         /// <param name="PropertyName">The name of the property to get</param>
         /// <returns>The casted value of an object based on its IMetaProperty</returns>
-        public static T GetValue<T>(this IMetaObject o, string PropertyName) => GetValue<T>(o.GetProperty(PropertyName));
+        public static T GetValue<T>(this IMetaObject o, string PropertyName)
+        {
+            return GetValue<T>(o.GetProperty(PropertyName));
+        }
 
         /// <summary>
         /// Gets the value of the object casted to the generic type
@@ -204,7 +207,10 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <typeparam name="T">The type to cast the object as</typeparam>
         /// <param name="o">The source</param>
         /// <returns>The casted value</returns>
-        public static T GetValue<T>(this IMetaObject o) => (T)o.GetValue(typeof(T));
+        public static T GetValue<T>(this IMetaObject o)
+        {
+            return (T)o.GetValue(typeof(T));
+        }
 
         /// <summary>
         /// Gets the value of the object casted to the type variable

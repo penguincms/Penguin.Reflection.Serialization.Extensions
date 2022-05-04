@@ -4,7 +4,7 @@
         <name>Penguin.Reflection.Serialization.Extensions</name>
     </assembly>
     <members>
-        <member name="M:Penguin.Reflection.Serialization.Extensions.IEnumerableExtensions.ToMetaList``1(System.Collections.Generic.IEnumerable{``0},System.Boolean)">
+        <member name="M:Penguin.Reflection.Serialization.Extensions.Extensions.IEnumerableExtensions.ToMetaList``1(System.Collections.Generic.IEnumerable{``0},System.Boolean)">
             <summary>
             Converts an IEnumerable to an IEnumerable of MetObjects
             </summary>
@@ -13,7 +13,7 @@
             <param name="Hydrate">Should the return objects be hydrated?</param>
             <returns>And IEnumerable of converted objects</returns>
         </member>
-        <member name="M:Penguin.Reflection.Serialization.Extensions.IEnumerableExtensions.ToMetaList``1(System.Collections.Generic.IEnumerable{``0},Penguin.Reflection.Serialization.Constructors.MetaConstructor,System.Boolean)">
+        <member name="M:Penguin.Reflection.Serialization.Extensions.Extensions.IEnumerableExtensions.ToMetaList``1(System.Collections.Generic.IEnumerable{``0},Penguin.Reflection.Serialization.Constructors.MetaConstructor,System.Boolean)">
             <summary>
             Converts an IEnumerable to an IEnumerable of MetObjects
             </summary>

@@ -2,8 +2,7 @@
 using Penguin.Reflection.Serialization.Constructors;
 using Penguin.Reflection.Serialization.Objects;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-namespace Penguin.Reflection.Serialization.Extensions
+namespace Penguin.Reflection.Serialization.Extensions.Extensions
 {
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
@@ -17,7 +16,28 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <param name="source">The source IEnumerable</param>
         /// <param name="Hydrate">Should the return objects be hydrated?</param>
         /// <returns>And IEnumerable of converted objects</returns>
-        public static IEnumerable<IMetaObject> ToMetaList<T>(this IEnumerable<T> source, bool Hydrate = false) => source.ToMetaList<T>(null, Hydrate);
+
+        /* Unmerged change from project 'Penguin.Reflection.Serialization.Extensions.Local (netstandard2.1)'
+        Before:
+                public static IEnumerable<IMetaObject> ToMetaList<T>(this IEnumerable<T> source, bool Hydrate = false) => source.ToMetaList<T>(null, Hydrate);
+        After:
+                public static IEnumerable<IMetaObject> ToMetaList<T>(this IEnumerable<T> source, bool Hydrate = false)
+                {
+                    return source.ToMetaList<T>(null, Hydrate);
+        */
+
+        /* Unmerged change from project 'Penguin.Reflection.Serialization.Extensions.Local (net5.0)'
+        Before:
+                public static IEnumerable<IMetaObject> ToMetaList<T>(this IEnumerable<T> source, bool Hydrate = false) => source.ToMetaList<T>(null, Hydrate);
+        After:
+                public static IEnumerable<IMetaObject> ToMetaList<T>(this IEnumerable<T> source, bool Hydrate = false)
+                {
+                    return source.ToMetaList<T>(null, Hydrate);
+        */
+        public static IEnumerable<IMetaObject> ToMetaList<T>(this IEnumerable<T> source, bool Hydrate = false)
+        {
+            return source.ToMetaList(null, Hydrate);
+        }
 
         /// <summary>
         /// Converts an IEnumerable to an IEnumerable of MetObjects
