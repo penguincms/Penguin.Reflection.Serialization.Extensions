@@ -30,7 +30,7 @@ namespace Penguin.Reflection.Serialization.Extensions
                 throw new System.ArgumentNullException(nameof(o));
             }
 
-            MetaAttribute a = new MetaAttribute(-1)
+            MetaAttribute a = new(-1)
             {
                 Instance = new MetaObject(-1)
                 {
@@ -48,13 +48,13 @@ namespace Penguin.Reflection.Serialization.Extensions
                 },
             };
 
-            MetaType at = new MetaType(typeof(T), a.Instance.Properties);
+            MetaType at = new(typeof(T), a.Instance.Properties);
             a.Type = at;
             a.Instance.Type = at;
 
             if (o.Property is null)
             {
-                MetaProperty p = new MetaProperty
+                MetaProperty p = new()
                 {
                     Type = at
                 };
@@ -80,7 +80,7 @@ namespace Penguin.Reflection.Serialization.Extensions
                 throw new System.ArgumentNullException(nameof(o));
             }
 
-            List<IMetaAttribute> toReturn = new List<IMetaAttribute>();
+            List<IMetaAttribute> toReturn = new();
 
             if (o.Property != null)
             {
@@ -159,12 +159,7 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <returns>The object value, casted to its original type</returns>
         public static object GetTypedValue(this IMetaObject o)
         {
-            if (o is null)
-            {
-                throw new System.ArgumentNullException(nameof(o));
-            }
-
-            return o.GetValue(System.Type.GetType(o.Type.AssemblyQualifiedName));
+            return o is null ? throw new System.ArgumentNullException(nameof(o)) : o.GetValue(System.Type.GetType(o.Type.AssemblyQualifiedName));
         }
 
         /// <summary>
@@ -176,17 +171,9 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <returns>The casted value of an object based on its IMetaProperty</returns>
         public static T GetValue<T>(this IMetaObject o, IMetaProperty property)
         {
-            if (o is null)
-            {
-                throw new System.ArgumentNullException(nameof(o));
-            }
-
-            if (property is null)
-            {
-                throw new System.ArgumentNullException(nameof(property));
-            }
-
-            return GetValue<T>(o.GetProperty(property.Name));
+            return o is null
+                ? throw new System.ArgumentNullException(nameof(o))
+                : property is null ? throw new System.ArgumentNullException(nameof(property)) : GetValue<T>(o.GetProperty(property.Name));
         }
 
         /// <summary>
@@ -220,12 +207,7 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <returns>The casted value</returns>
         public static object GetValue(this IMetaObject o, System.Type t)
         {
-            if (o is null)
-            {
-                throw new System.ArgumentNullException(nameof(o));
-            }
-
-            return o.Value.Convert(t);
+            return o is null ? throw new System.ArgumentNullException(nameof(o)) : o.Value.Convert(t);
         }
 
         /// <summary>
@@ -236,12 +218,7 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <returns>A bool indicating whether or not the property exists</returns>
         public static bool HasProperty(this IMetaObject o, string PropertyName)
         {
-            if (o is null)
-            {
-                throw new System.ArgumentNullException(nameof(o));
-            }
-
-            return o.Properties.Any(p => p.Property.Name == PropertyName);
+            return o is null ? throw new System.ArgumentNullException(nameof(o)) : o.Properties.Any(p => p.Property.Name == PropertyName);
         }
 
         /// <summary>
@@ -252,12 +229,7 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <returns>A bool indicating whether or not the property exists</returns>
         public static bool HasProperty(this IMetaObject o, IMetaProperty property)
         {
-            if (o is null)
-            {
-                throw new System.ArgumentNullException(nameof(o));
-            }
-
-            return o.Properties.Any(p => p.Property.Name == property.Name);
+            return o is null ? throw new System.ArgumentNullException(nameof(o)) : o.Properties.Any(p => p.Property.Name == property.Name);
         }
 
         /// <summary>
@@ -268,12 +240,9 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <returns>The attribute</returns>
         public static IMetaAttribute IMetaAttribute(this IMetaObject o, string IMetaAttributeName)
         {
-            if (o is null)
-            {
-                throw new System.ArgumentNullException(nameof(o));
-            }
-
-            return o.Property?.Attributes?.FirstOrDefault(a => a.Type.Name == IMetaAttributeName) ??
+            return o is null
+                ? throw new System.ArgumentNullException(nameof(o))
+                : o.Property?.Attributes?.FirstOrDefault(a => a.Type.Name == IMetaAttributeName) ??
                    o.Type.Attributes.FirstOrDefault(a => a.Type.Name == IMetaAttributeName);
         }
 
@@ -291,7 +260,7 @@ namespace Penguin.Reflection.Serialization.Extensions
                 throw new System.ArgumentNullException(nameof(o));
             }
 
-            Dictionary<X, Y> toReturn = new Dictionary<X, Y>();
+            Dictionary<X, Y> toReturn = new();
 
             foreach (MetaObject thisObject in o.CollectionItems)
             {
@@ -311,12 +280,7 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <returns>A Json string representation of the object</returns>
         public static string ToJson(this IMetaObject o)
         {
-            if (o is null)
-            {
-                throw new System.ArgumentNullException(nameof(o));
-            }
-
-            return o.ToJson(new StringBuilder()).ToString();
+            return o is null ? throw new System.ArgumentNullException(nameof(o)) : o.ToJson(new StringBuilder()).ToString();
         }
 
         internal static StringBuilder ToJson(this IMetaObject o, StringBuilder b)

@@ -30,12 +30,9 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <returns>The attribute, or null if not found</returns>
         public static IMetaObject Attribute(this IHasAttributes o, Type t)
         {
-            if (o is null)
-            {
-                throw new ArgumentNullException(nameof(o));
-            }
-
-            return o.Attributes.FirstOrDefault(a => a.Type.FullName == t.FullName)?.Instance;
+            return o is null
+                ? throw new ArgumentNullException(nameof(o))
+                : (o.Attributes.FirstOrDefault(a => a.Type.FullName == t.FullName)?.Instance);
         }
 
         /// <summary>
@@ -48,12 +45,9 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <returns>A nullable struct representation of its value</returns>
         public static Y? AttributeNullable<X, Y>(this IHasAttributes o, string PropertyName) where Y : struct
         {
-            if (!o.HasAttribute<X>() || !o.Attribute<X>().HasProperty(PropertyName))
-            {
-                return null;
-            }
-
-            return o.Attribute<X>().GetProperty(PropertyName).GetValue<Y>();
+            return !o.HasAttribute<X>() || !o.Attribute<X>().HasProperty(PropertyName)
+                ? null
+                : o.Attribute<X>().GetProperty(PropertyName).GetValue<Y>();
         }
 
         /// <summary>
@@ -66,12 +60,9 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <returns>Either the casted property or null</returns>
         public static Y AttributeRef<X, Y>(this IHasAttributes o, string PropertyName) where Y : class
         {
-            if (!o.HasAttribute<X>() || !o.Attribute<X>().HasProperty(PropertyName))
-            {
-                return null;
-            }
-
-            return o.Attribute<X>().GetProperty(PropertyName).GetValue<Y>();
+            return !o.HasAttribute<X>() || !o.Attribute<X>().HasProperty(PropertyName)
+                ? null
+                : o.Attribute<X>().GetProperty(PropertyName).GetValue<Y>();
         }
 
         /// <summary>
@@ -85,12 +76,9 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <returns>Either the casted property, or default</returns>
         public static Y AttributeRef<X, Y>(this IHasAttributes o, string PropertyName, Y Default) where Y : class
         {
-            if (!o.HasAttribute<X>() || !o.Attribute<X>().HasProperty(PropertyName))
-            {
-                return Default;
-            }
-
-            return o.Attribute<X>().GetProperty(PropertyName).GetValue<Y>() ?? Default;
+            return !o.HasAttribute<X>() || !o.Attribute<X>().HasProperty(PropertyName)
+                ? Default
+                : o.Attribute<X>().GetProperty(PropertyName).GetValue<Y>() ?? Default;
         }
 
         /// <summary>
@@ -104,12 +92,9 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <returns>Either the casted property, or default</returns>
         public static Y AttributeStruct<X, Y>(this IHasAttributes o, string PropertyName, Y Default) where Y : struct
         {
-            if (!o.HasAttribute<X>() || !o.Attribute<X>().HasProperty(PropertyName))
-            {
-                return Default;
-            }
-
-            return o.Attribute<X>().GetProperty(PropertyName).GetValue<Y>();
+            return !o.HasAttribute<X>() || !o.Attribute<X>().HasProperty(PropertyName)
+                ? Default
+                : o.Attribute<X>().GetProperty(PropertyName).GetValue<Y>();
         }
 
         /// <summary>
@@ -123,12 +108,9 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <returns>Either the casted property, or default</returns>
         public static Y AttributeStruct<Y>(this IHasAttributes o, Type t, string PropertyName, Y Default) where Y : struct
         {
-            if (!o.HasAttribute(t) || !o.Attribute(t).HasProperty(PropertyName))
-            {
-                return Default;
-            }
-
-            return o.Attribute(t).GetProperty(PropertyName).GetValue<Y>();
+            return !o.HasAttribute(t) || !o.Attribute(t).HasProperty(PropertyName)
+                ? Default
+                : o.Attribute(t).GetProperty(PropertyName).GetValue<Y>();
         }
 
         /// <summary>

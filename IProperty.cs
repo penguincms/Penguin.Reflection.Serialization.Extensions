@@ -22,17 +22,9 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <returns>The source property casted to the specified type</returns>
         public static T GetValue<T>(this IMetaProperty p, IMetaObject target)
         {
-            if (p is null)
-            {
-                throw new System.ArgumentNullException(nameof(p));
-            }
-
-            if (target is null)
-            {
-                throw new System.ArgumentNullException(nameof(target));
-            }
-
-            return target.GetValue<T>(p.Name);
+            return p is null
+                ? throw new System.ArgumentNullException(nameof(p))
+                : target is null ? throw new System.ArgumentNullException(nameof(target)) : target.GetValue<T>(p.Name);
         }
 
         /// <summary>
@@ -43,17 +35,9 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <returns>The value of the property from the speficied source as a string</returns>
         public static string GetValue(this IMetaProperty p, IMetaObject target)
         {
-            if (p is null)
-            {
-                throw new System.ArgumentNullException(nameof(p));
-            }
-
-            if (target is null)
-            {
-                throw new System.ArgumentNullException(nameof(target));
-            }
-
-            return target[p.Name].Value;
+            return p is null
+                ? throw new System.ArgumentNullException(nameof(p))
+                : target is null ? throw new System.ArgumentNullException(nameof(target)) : target[p.Name].Value;
         }
 
         public static bool TestFlags(long val, long flags)
@@ -93,7 +77,7 @@ namespace Penguin.Reflection.Serialization.Extensions
         {
             otherFlags = p.GetValue(target).Convert<long>();
 
-            List<EnumValue> toReturn = new List<EnumValue>();
+            List<EnumValue> toReturn = new();
 
             foreach (EnumValue thisValue in p.GetFlags(target))
             {

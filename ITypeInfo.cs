@@ -19,17 +19,9 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <returns>If the object is of the requested type</returns>
         public static bool Is(this ITypeInfo o, MetaType type)
         {
-            if (o is null)
-            {
-                throw new System.ArgumentNullException(nameof(o));
-            }
-
-            if (type is null)
-            {
-                throw new System.ArgumentNullException(nameof(type));
-            }
-
-            return o.Is(type.StringValue);
+            return o is null
+                ? throw new System.ArgumentNullException(nameof(o))
+                : type is null ? throw new System.ArgumentNullException(nameof(type)) : o.Is(type.StringValue);
         }
 
         /// <summary>
@@ -40,17 +32,9 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <returns>If the object is of the requested type</returns>
         public static bool Is(this ITypeInfo o, RType type)
         {
-            if (o is null)
-            {
-                throw new System.ArgumentNullException(nameof(o));
-            }
-
-            if (type is null)
-            {
-                throw new System.ArgumentNullException(nameof(type));
-            }
-
-            return o.Is(type.ToString());
+            return o is null
+                ? throw new System.ArgumentNullException(nameof(o))
+                : type is null ? throw new System.ArgumentNullException(nameof(type)) : o.Is(type.ToString());
         }
 
         /// <summary>
@@ -61,12 +45,7 @@ namespace Penguin.Reflection.Serialization.Extensions
         /// <returns>If the object is of the requested type</returns>
         public static bool Is<RType>(this ITypeInfo o)
         {
-            if (o is null)
-            {
-                throw new System.ArgumentNullException(nameof(o));
-            }
-
-            return Is(o, typeof(RType));
+            return o is null ? throw new System.ArgumentNullException(nameof(o)) : Is(o, typeof(RType));
         }
 
         #endregion Methods

@@ -2,6 +2,7 @@
 using Penguin.Reflection.Serialization.Constructors;
 using Penguin.Reflection.Serialization.Objects;
 using System.Collections.Generic;
+
 namespace Penguin.Reflection.Serialization.Extensions.Extensions
 {
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
@@ -17,23 +18,7 @@ namespace Penguin.Reflection.Serialization.Extensions.Extensions
         /// <param name="Hydrate">Should the return objects be hydrated?</param>
         /// <returns>And IEnumerable of converted objects</returns>
 
-        /* Unmerged change from project 'Penguin.Reflection.Serialization.Extensions.Local (netstandard2.1)'
-        Before:
-                public static IEnumerable<IMetaObject> ToMetaList<T>(this IEnumerable<T> source, bool Hydrate = false) => source.ToMetaList<T>(null, Hydrate);
-        After:
-                public static IEnumerable<IMetaObject> ToMetaList<T>(this IEnumerable<T> source, bool Hydrate = false)
-                {
-                    return source.ToMetaList<T>(null, Hydrate);
-        */
-
-        /* Unmerged change from project 'Penguin.Reflection.Serialization.Extensions.Local (net5.0)'
-        Before:
-                public static IEnumerable<IMetaObject> ToMetaList<T>(this IEnumerable<T> source, bool Hydrate = false) => source.ToMetaList<T>(null, Hydrate);
-        After:
-                public static IEnumerable<IMetaObject> ToMetaList<T>(this IEnumerable<T> source, bool Hydrate = false)
-                {
-                    return source.ToMetaList<T>(null, Hydrate);
-        */
+  
         public static IEnumerable<IMetaObject> ToMetaList<T>(this IEnumerable<T> source, bool Hydrate = false)
         {
             return source.ToMetaList(null, Hydrate);
@@ -54,14 +39,11 @@ namespace Penguin.Reflection.Serialization.Extensions.Extensions
                 throw new System.ArgumentNullException(nameof(source));
             }
 
-            if (c is null)
-            {
-                c = new MetaConstructor();
-            }
+            c ??= new MetaConstructor();
 
             foreach (T o in source)
             {
-                MetaObject m = new MetaObject(o, c);
+                MetaObject m = new(o, c);
 
                 if (Hydrate)
                 {
