@@ -18,7 +18,6 @@ namespace Penguin.Reflection.Serialization.Extensions.Extensions
         /// <param name="Hydrate">Should the return objects be hydrated?</param>
         /// <returns>And IEnumerable of converted objects</returns>
 
-  
         public static IEnumerable<IMetaObject> ToMetaList<T>(this IEnumerable<T> source, bool Hydrate = false)
         {
             return source.ToMetaList(null, Hydrate);
